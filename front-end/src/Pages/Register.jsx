@@ -1,0 +1,122 @@
+import React from "react";
+import { ImFacebook } from "react-icons/im";
+import { FaGoogle } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa6";
+
+const Register = () => {
+  return (
+    <div className="bg-[#93ACEA] flex flex-col justify-center items-center min-h-screen">
+      <div className="bg-white shadow-lg max-w-md w-full rounded-lg p-10">
+        <form className="">
+          <div className="text-center">
+            <h1 className="font-bold  text-4xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest">
+              Welcome!
+            </h1>
+            <p className="text-lg sm:text-base md:text-lg lg:text-xl mt-2">
+              Sign up to get started
+            </p>
+          </div>
+
+          {/*username*/}
+          <div className="mt-10 space-y-6 ">
+            <div className="">
+              <label
+                htmlFor="Username"
+                className=" block text-sm font-semibold text-gray-700"
+              >
+                Username
+              </label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
+                name="Username"
+                id="Username"
+                placeholder="Enter your username"
+              ></input>
+            </div>
+            {/*password*/}
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-semibold text-gray-700"
+              >
+                Email
+              </label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border-2  border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            {/*email*/}
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-semibold text-gray-700"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                className="w-full px-4 py-3  border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+              ></input>
+            </div>
+            <p className="text-center mt-4">or</p>
+            <div className="flex text-black justify-center gap-4 mt-4">
+              <div className="h-10 w-10 rounded-full border flex justify-center items-center">
+                <ImFacebook className="text-xl" />
+              </div>
+              <div className="h-10 w-10 rounded-full border flex justify-center items-center">
+                <FaGoogle />
+              </div>
+              <div className="h-10 w-10 rounded-full border flex justify-center items-center">
+                <FaTwitter />
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#0D2841]  text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 mt-4"
+            >
+              sign up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Register;
+
+// import React from "react";
+
+// const Register = () => {
+//   return (
+//     <div className="min-h-screen w-full bg-[#93ACEA] text-white ">
+//       <div className="flex flex-col justify-center  items-center space-y-3 p-20">
+//         <h1 className="font-bold  text-4xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest">
+//           Welcome!
+//         </h1>
+//         <p className="text-lg sm:text-base md:text-lg lg:text-xl">
+//           Sign up to get started
+//         </p>
+//       </div>
+//       {/**form */}
+//       <form className="text-white">
+//         <label
+//           htmlFor="Username"
+//           className="block text-sm font-semibold text-gray-700 mb-2"
+//         >
+//           Username
+//         </label>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Register;
