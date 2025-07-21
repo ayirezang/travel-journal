@@ -66,8 +66,8 @@ const Register = () => {
                 placeholder="Enter your password"
               ></input>
             </div>
-            <p className="text-center mt-4">or</p>
-            <div className="flex text-black justify-center gap-4 mt-4">
+            {/* <p className="text-center mt-4">or</p> */}
+            {/* <div className="flex text-black justify-center gap-4 mt-4">
               <div className="h-10 w-10 rounded-full border flex justify-center items-center">
                 <ImFacebook className="text-xl" />
               </div>
@@ -77,7 +77,7 @@ const Register = () => {
               <div className="h-10 w-10 rounded-full border flex justify-center items-center">
                 <FaTwitter />
               </div>
-            </div>
+            </div> */}
             <button
               type="submit"
               className="w-full bg-[#0D2841]  text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 mt-4"
@@ -92,31 +92,3 @@ const Register = () => {
 };
 
 export default Register;
-
-// import React from "react";
-
-// const Register = () => {
-//   return (
-//     <div className="min-h-screen w-full bg-[#93ACEA] text-white ">
-//       <div className="flex flex-col justify-center  items-center space-y-3 p-20">
-//         <h1 className="font-bold  text-4xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest">
-//           Welcome!
-//         </h1>
-//         <p className="text-lg sm:text-base md:text-lg lg:text-xl">
-//           Sign up to get started
-//         </p>
-//       </div>
-//       {/**form */}
-//       <form className="text-white">
-//         <label
-//           htmlFor="Username"
-//           className="block text-sm font-semibold text-gray-700 mb-2"
-//         >
-//           Username
-//         </label>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Register;
