@@ -14,6 +14,11 @@ const travelJourSchema = new Schema({
     type: String,
     required: true,
   },
+
+  // travelDate: {
+  //   type: Date,
+  //   required: true,
+
   createdAt: {
     type: Date,
     default: Date.now,
