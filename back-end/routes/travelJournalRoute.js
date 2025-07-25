@@ -5,7 +5,7 @@ const {
   retrieveSingleTravelJournalById,
   updateTravelJournal,
   deleteTravelJournal,
-} = require("../controllers/travelJournalController");
+} = require("../controllers/travelJournalController.js");
 
 const router = express.Router();
 
