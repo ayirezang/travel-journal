@@ -1,8 +1,10 @@
 const express = require("express");
 
+require("dotenv").config();
+
 const { mongoose } = require("mongoose");
 const travelRoute = require("./routes/travelJournalRoute");
-require("dotenv").config();
+const cloudinary = require("./config/cloudinary");
 
 const server = express();
 //middleware
