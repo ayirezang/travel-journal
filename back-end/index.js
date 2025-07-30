@@ -5,8 +5,11 @@ require("dotenv").config();
 const { mongoose } = require("mongoose");
 const travelRoute = require("./routes/travelJournalRoute");
 const cloudinary = require("./config/cloudinary");
+const cookieParser = require("cookie-parser");
 
 const server = express();
+server.use(cookieParser());
+
 //middleware
 server.use(express.json());
 //routes
