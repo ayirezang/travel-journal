@@ -1,37 +1,62 @@
 const photosModel = require("../models/photosModel");
+const cloudinary = require("../config/cloudinary");
 
-const uploadPhotos = async (req, res, next) => {
-  if (!req.buffer || req.files.length === 0) {
-    return res.status(400).send("no photos uploaded");
-  }
+const createPhotos = async (req, res) => {
   try {
-    const uploadPromises = req.files.map((file) =>
-      cloudinary.uploader.upload(file.buffer)
-    );
-    const results = await Promise.all(uploadPromises);
-    req.files.forEach((file) => {});
-    const secureUrls = results.map((result) => result.secure_url);
-    const savedSecureUrls = await secureUrls.save();
-    res.json({ message: "files uploaded successfully", data: savedSecureUrls });
+    if (!req.files || req.files.length === 0) {
+      return res
+        .status(400)
+        .json({ success: false, message: "no photos uploaded" });
+    }
+    const uploadPromises = req.files.map(async (file) => {
+      const cloudinaryResult = await cloud.uploads(file);
+      return {
+        filename: file.originalname,
+        url: cloudinaryResult.url,
+        size: file.size,
+        mimeType: file.mimeType,
+        memoryId: req.body.memoryId,
+      };
+    });
+    const photoDataArray = await Promise.all(uploadPromises);
+    const savedPhotos = await photosModel.insertMany(photoDataArray);
+    res.json({
+      success: true,
+      message: `${savedPhotos.length} photos uploaded successfully`,
+      data: savedPhotos,
+    });
   } catch (error) {
-    console.log("cloudinary upload error:", error);
-    res.status(500).send("error uploading files");
+    res.status(500).json({
+      success: false,
+      message: `error uploading photos:${error.message}`,
+    });
   }
 };
 
-module.exports = { uploadPhotos };
-
-// , function (req, res, next) {
-//   if (!req.files) {
-//     return res.status(400).json({ error: "no file uploaded" });
-//   }
-//   cloudinary.uploader
-//     .upload_stream({ resource_type: "auto" }, (error, result) => {
-//       if (error) {
-//         console.log(error);
-//         return res.status(500).json({ error: "error uploading to cloudinary" });
-//       }
-//       res.json({ public_id: result.public_id, url: result.secure_url });
-//     })
-//     .end(req.files[0].buffer);
-// });
+const getPhotoById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "error image  id is required",
+      });
+    }
+    const photo = await photosModel.findById(id);
+    if (!photo) {
+      return res.status(404).json({
+        success: false,
+        message: "image not found",
+      });
+    } else {
+      res.status(200).json({ message: "photo found", data: photo });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: `error retrieving photo:${error.message}`,
+    });
+  }
+};
+const getAllPhotos = async (req, res) => {};
+module.exports = { createPhotos, getPhotoById, getAllPhotos };
