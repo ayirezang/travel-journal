@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const { mongoose } = require("mongoose");
 const travelRoute = require("./routes/travelJournalRoute");
+const photosRoute = require("./routes/photosRoute");
 const cloudinary = require("./config/cloudinary");
 const cookieParser = require("cookie-parser");
 
@@ -14,6 +15,7 @@ server.use(cookieParser());
 server.use(express.json());
 //routes
 server.use(travelRoute);
+server.use(photosRoute);
 
 mongoose
   .connect(process.env.MONGO_DB)

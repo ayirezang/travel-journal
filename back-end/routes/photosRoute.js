@@ -2,7 +2,13 @@ const express = require("express");
 const multer = require("multer");
 const cloudinary = require("../config/cloudinary");
 const Authorization = require("../controllers/Auth");
-const { uploadPhotos } = require("../controllers/photosController");
+const {
+  createPhotos,
+  getPhotoById,
+  getAllPhotos,
+  updatePhoto,
+  deletePhotos,
+} = require("../controllers/photosController");
 const router = express.Router();
 const path = require("path");
 
@@ -17,12 +23,17 @@ const photoStorage = multer.diskStorage({
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
-    cb(null, file.filename + "-" + uniqueSuffix);
+    const baseName = path.baseName(file.originalname, ext);
+    cb(null, baseName + "-" + uniqueSuffix + ext);
   },
 });
 const upload = multer({ storage: photoStorage });
 
 //routes for image upload
-router.post("/upload", Authorization, upload.array("upload", 5), uploadPhotos);
+router.post("/upload", upload.array("upload", 5), createPhotos);
+router.get("/upload", getAllPhotos);
+router.get("/upload/:id", getPhotoById);
+router.put("/upload/:id", updatePhoto);
+router.delete("/upload/:id", deletePhotos);
 
 module.exports = router;
