@@ -31,20 +31,29 @@ const Upload = () => {
             <input
               type="text"
               className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
-              name="Username"
-              id="Username"
-              placeholder="Enter your username"
+              name="location"
+              id="location"
+              placeholder="Enter the location"
             ></input>
+            {...register("location", { required: true })}
+            <error>
+              {errors.location?.location === "required" &&
+                "location is required"}
+            </error>
           </div>
           <div>
             <label> Travel date</label>
             <input
               type="date"
               className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
-              name="Username"
-              id="Username"
-              placeholder="Enter your username"
+              name="date"
+              id="date"
+              placeholder="Enter your travel date"
             ></input>
+            {...register("title", { required: true })}
+            <error>
+              {errors.date?.date === "required" && "date is required"}
+            </error>
           </div>
           <div>
             <label>Description</label>
@@ -52,6 +61,11 @@ const Upload = () => {
               className="textarea textarea-ghost border-2 border-gray-200 focus:border-[#6A9ACA]"
               placeholder="Bio"
             ></textarea>
+            {...register("description", { required: true })}
+            <error>
+              {errors.description?.description === "required" &&
+                "description is required"}
+            </error>
           </div>
           <div>
             <label>upload a file</label>
