@@ -23,17 +23,22 @@ const photoStorage = multer.diskStorage({
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
-    const baseName = path.baseName(file.originalname, ext);
+    const baseName = path.basename(file.originalname, ext);
     cb(null, baseName + "-" + uniqueSuffix + ext);
   },
 });
 const upload = multer({ storage: photoStorage });
 
 //routes for image upload
-router.post("/upload", upload.array("upload", 5), createPhotos);
-router.get("/upload", getAllPhotos);
-router.get("/upload/:id", getPhotoById);
-router.put("/upload/:id", updatePhoto);
+router.post(
+  "/upload",
+
+  upload.array("upload", 5),
+  createPhotos
+);
+router.get("/upload/:memoryId", getAllPhotos);
+router.get("/upload/photo/:id", getPhotoById);
+router.put("/upload/photo/:id", updatePhoto);
 router.delete("/upload/:id", deletePhotos);
 
 module.exports = router;

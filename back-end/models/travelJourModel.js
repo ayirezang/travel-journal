@@ -15,10 +15,16 @@ const travelJourSchema = new Schema({
     required: true,
   },
 
-  // travelDate: {
-  //   type: Date,
-  //   required: true,
-
+  travelDate: {
+    type: Date,
+    required: true,
+    validate: {
+      validator: function (date) {
+        return date <= new Date();
+      },
+      //  message:" travel date  cant be in the future"
+    },
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -2,9 +2,6 @@ const photosModel = require("../models/photosModel");
 const cloudinary = require("../config/cloudinary");
 
 const createPhotos = async (req, res) => {
-
-
-  
   try {
     if (!req.files || req.files.length === 0) {
       return res
@@ -12,12 +9,12 @@ const createPhotos = async (req, res) => {
         .json({ success: false, message: "no photos uploaded" });
     }
     const uploadPromises = req.files.map(async (file) => {
-      const cloudinaryResult = await cloud.uploads(file);
+      const cloudinaryResult = await cloudinary.uploads(file);
       return {
         filename: file.originalname,
         url: cloudinaryResult.url,
         size: file.size,
-        mimeType: file.mimeType,
+        mimetype: file.mimetype,
         memoryId: req.body.memoryId,
       };
     });

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import Upload from "./Pages/upload";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/upload" element={<Upload />} />
       </Routes>
     </div>
   );
