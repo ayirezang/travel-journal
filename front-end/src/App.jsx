@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-import Upload from "./Pages/upload";
+import Upload from "./Pages/Upload";
 
 const App = () => {
   return (

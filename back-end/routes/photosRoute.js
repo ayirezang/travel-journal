@@ -33,7 +33,7 @@ const upload = multer({ storage: photoStorage });
 router.post(
   "/upload",
 
-  upload.array("upload", 5),
+  upload.array("upload", 4),
   createPhotos
 );
 router.get("/upload/:memoryId", getAllPhotos);
