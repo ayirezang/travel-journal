@@ -5,17 +5,21 @@ require("dotenv").config();
 const { mongoose } = require("mongoose");
 const travelRoute = require("./routes/travelJournalRoute");
 const photosRoute = require("./routes/photosRoute");
+const userRoute = require("./routes/userRoute");
 const cloudinary = require("./config/cloudinary");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const server = express();
+server.use(cors());
 server.use(cookieParser());
 
 //middleware
 server.use(express.json());
 //routes
-server.use(travelRoute);
-server.use(photosRoute);
+server.use("/api", travelRoute);
+server.use("/api", photosRoute);
+server.use("/api", userRoute);
 
 mongoose
   .connect(process.env.MONGO_DB)

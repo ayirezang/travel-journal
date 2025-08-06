@@ -7,7 +7,7 @@ const Home = () => {
       <p>your travel journal is empty! start your first adventure</p>
       <div>
         <button className="bg-blue-500 text-white p-4 rounded-xl">
-          <Link to="/upload"> create your first entry!</Link>
+          <Link to="/register"> create your first entry!</Link>
         </button>
       </div>
     </div>
