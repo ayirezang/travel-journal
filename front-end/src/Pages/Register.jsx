@@ -13,11 +13,17 @@ const Register = () => {
   } = useForm();
   const onSubmit = async (data) => {
     try {
+      console.log("submitting data:", data);
+      console.log("username value:", data.username);
+      console.log("username length:", data.username?.length);
       await signUpApi(data);
       //navigate
-      navigate("/home");
+      navigate("/");
     } catch (error) {
-      alert("sign up failed:" + error.message);
+      console.error("full error:", error.response?.data);
+      alert(
+        "sign up failed:" + (error.response?.data.message || error.message)
+      );
       console.log(error);
     }
   };
@@ -44,7 +50,7 @@ const Register = () => {
                 Username
               </label>
               <input
-                {...register("Username", { required: "username is required" })}
+                {...register("Username", { required: "Username is required" })}
                 type="text"
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
                 name="Username"

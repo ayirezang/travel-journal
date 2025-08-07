@@ -10,13 +10,10 @@ const api = axios.create({
   },
 });
 //signup
-export const signUpApi = async (Username, email, password) => {
+export const signUpApi = async (data) => {
   try {
-    const response = await api.post("/signup", {
-      Username,
-      email,
-      password,
-    });
+    const response = await api.post("/signup", data);
+
     Cookie.set("token", response.data.token, { expires: 5 });
     return response.data;
   } catch (error) {
@@ -26,9 +23,9 @@ export const signUpApi = async (Username, email, password) => {
   }
 };
 // signinApi
-export const signInApi = async (email, password) => {
+export const signInApi = async (data) => {
   try {
-    const response = await api.post("/signin", { email, password });
+    const response = await api.post("/signin", data);
     Cookie.set("token", response.data.token, { expires: 5 });
     return response.data;
   } catch (error) {

@@ -5,6 +5,7 @@ require("dotenv").config();
 const { mongoose } = require("mongoose");
 const travelRoute = require("./routes/travelJournalRoute");
 const photosRoute = require("./routes/photosRoute");
+const controller = require("./controllers/userControllers");
 const userRoute = require("./routes/userRoute");
 const cloudinary = require("./config/cloudinary");
 const cookieParser = require("cookie-parser");

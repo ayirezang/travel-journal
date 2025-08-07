@@ -21,6 +21,9 @@ const signUp = async (req, res) => {
   const { Username, password, email } = req.body;
 
   try {
+    if (!req.body.Username || req.body.Username.trim() === "") {
+      return res.status(400).json({ message: "Username cannot be empty" });
+    }
     // Check if user already exists
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
