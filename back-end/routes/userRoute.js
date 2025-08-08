@@ -7,12 +7,12 @@ router.post(
   "/signup",
   [
     //usernmae
-    body("Username")
+    body("username")
       .notEmpty()
-      .withMessage("Username field required")
+      .withMessage("username field required")
       .trim()
       .isLength({ min: 3, max: 40 })
-      .withMessage("Username must be between 3-20 characters"),
+      .withMessage("username must be between 3-20 characters"),
 
     //password
     body("password")

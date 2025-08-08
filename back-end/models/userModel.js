@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-  Username: {
+  username: {
     type: String,
     required: true,
-    // unique: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -20,7 +20,7 @@ const userSchema = new Schema({
     ref: "user",
     required: false,
   },
-  createdId: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },

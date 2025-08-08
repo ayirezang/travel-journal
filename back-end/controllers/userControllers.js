@@ -18,10 +18,10 @@ const signUp = async (req, res) => {
       errors: errors.array(),
     });
   }
-  const { Username, password, email } = req.body;
+  const { username, password, email } = req.body;
 
   try {
-    if (!req.body.Username || req.body.Username.trim() === "") {
+    if (!req.body.username || req.body.username.trim() === "") {
       return res.status(400).json({ message: "Username cannot be empty" });
     }
     // Check if user already exists
@@ -35,7 +35,7 @@ const signUp = async (req, res) => {
 
     // Create and save new user
     const user = new userModel({
-      Username,
+      username,
       email,
       password: hash,
     });
@@ -57,7 +57,7 @@ const signUp = async (req, res) => {
       .json({
         message: "user created successfully",
         user: {
-          Username: savedUser.Username,
+          username: savedUser.username,
           email: savedUser.email,
         },
       });
@@ -101,7 +101,7 @@ const signIn = async (req, res) => {
       .json({
         message: "sign in successful",
         user: {
-          Username: existingUser.Username,
+          username: existingUser.username,
           email: existingUser.email,
         },
       });
