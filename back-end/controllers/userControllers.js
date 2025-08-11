@@ -18,6 +18,7 @@ const signUp = async (req, res) => {
       errors: errors.array(),
     });
   }
+  await userModel.deleteMany({ Username: null });
   const { username, password, email } = req.body;
 
   try {

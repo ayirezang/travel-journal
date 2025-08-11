@@ -44,20 +44,20 @@ const Register = () => {
           <div className="mt-10 space-y-6 ">
             <div className="">
               <label
-                htmlFor="Username"
+                htmlFor="username"
                 className=" block text-sm font-semibold text-gray-700"
               >
                 Username
               </label>
               <input
-                {...register("Username", { required: "Username is required" })}
+                {...register("username", { required: "username is required" })}
                 type="text"
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
-                name="Username"
-                id="Username"
+                name="username"
+                id="username"
                 placeholder="Enter your username"
               ></input>
-              {errors.Username && (
+              {errors.username && (
                 <p className="text-red-500 text-sm mt-1">
                   username is required
                 </p>
@@ -74,13 +74,20 @@ const Register = () => {
               <input
                 {...register("email", {
                   required: "email is required",
-
+                  minLength: {
+                    value: 3,
+                    message: "username must be at least 3 characters",
+                  },
+                  maxLength: {
+                    value: 35,
+                    message: "username must not exceed 35 characters",
+                  },
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                     message: "please enter a valid email(e.g,angela@gmail.com)",
                   },
                 })}
-                type="text"
+                type="email"
                 className="w-full px-4 py-3 border-2  border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
                 name="email"
                 id="email"
@@ -129,6 +136,8 @@ const Register = () => {
             >
               sign up
             </button>
+            <p>already have an account</p>
+            <Link to="/upload">login </Link>
           </div>
         </form>
       </div>

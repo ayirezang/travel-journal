@@ -11,7 +11,7 @@ router.post(
       .notEmpty()
       .withMessage("username field required")
       .trim()
-      .isLength({ min: 3, max: 40 })
+      .isLength({ min: 3, max: 35 })
       .withMessage("username must be between 3-20 characters"),
 
     //password

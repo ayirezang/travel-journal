@@ -15,7 +15,7 @@ const Login = () => {
     try {
       await signInApi(data);
       //navigate
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       alert("sign in failed:" + error.message);
       console.log(error);
