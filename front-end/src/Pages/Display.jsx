@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { BsArrowRight } from "react-icons/bs";
 
@@ -7,14 +7,22 @@ import { FiHome } from "react-icons/fi";
 import { GoSignIn } from "react-icons/go";
 import { GoSignOut } from "react-icons/go";
 import Card from "../Components/Card";
+import Skeleton from "../Components/Skeleton";
 
 const Display = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+  const Skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <div className="">
       <div className="grid grid-cols-12 min-h-screen">
-        <div className="col-span-1 bg-green-700">
-          <aside className="flex flex-col items-center gap-6 py-4">
-            <FiHome size={28} className="mt-13" />
+        <div className="col-span-1 border-r border-gray-300">
+          <aside className="flex flex-col items-center gap-15 py-4">
+            <FiHome size={28} className="mt-10" />
             <FaRegSquarePlus size={28} />
             <GoSignIn size={28} />
             <GoSignOut size={28} />
@@ -37,19 +45,18 @@ const Display = () => {
           <div className="p-5">
             <main>
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <Card />
-                <Card />
-                <Card />
-              </div>
-              <div className="grid grid-cols-3 gap-4 ">
-                <Card />
-                <Card />
-                <Card />
+                {Skeletons.map((skeleton, index) => {
+                  return (
+                    <div key={index}>
+                      <Skeleton />
+                    </div>
+                  );
+                })}
+                {/* {loading ? <Skeleton /> : <Card />} */}
               </div>
             </main>
           </div>
         </div>
-        <hr className="bg-black"></hr>
       </div>
     </div>
   );

@@ -1,30 +1,24 @@
-import React from "react";
-
-const Card = ({ props }) => {
+const Card = () => {
   return (
-    <div>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-          <img
-            src={
-              props.image ||
-              "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            }
-            alt="Shoes"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{props.title || "Card Title"}</h2>
-          <p>
-            {props.description ||
-              "A card component has a figure, a body part, and inside body there  are title and actions parts"}
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">
-              {props.text || "Buy Now"}
-            </button>
-          </div>
-        </div>
+    <div className=" p-4 rounded shadow-2xl w-[100%] max-w-[700px]">
+      <div className="relative h-60 mb-4">
+        <img
+          className="absolute w-full  h-full object-cover rounded"
+          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          alt=""
+        ></img>
+      </div>
+      <div>
+        <h1 className="font-semibold pb-2">Sao tome</h1>
+        <p className="font-thin pb-2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+          dignissimos vero nobis, architecto facere aspernatur corrupti saepe
+          molestiae iste distinctio tenetur incidunt illum sapiente quaerat
+          perferendis corporis aperiam reprehenderit vel?
+        </p>
+        <button className="px-2 py-2 bg-blue-500 text-white shadow-md">
+          read more
+        </button>
       </div>
     </div>
   );

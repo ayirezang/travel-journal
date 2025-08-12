@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import { signUpApi } from "../../api/api";
@@ -136,8 +137,12 @@ const Register = () => {
             >
               sign up
             </button>
-            <p>already have an account</p>
-            <Link to="/upload">login </Link>
+            <p>
+              already have an account{" "}
+              <Link to="/upload">
+                <span className="text-blue-700">login </span>
+              </Link>
+            </p>
           </div>
         </form>
       </div>
