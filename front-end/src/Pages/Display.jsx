@@ -1,19 +1,26 @@
 import React from "react";
 
 import { BsArrowRight } from "react-icons/bs";
-import { CiSquarePlus } from "react-icons/ci";
-import { FiHome } from "react-icons/fi";
 
-const Dispay = () => {
+import { FaRegSquarePlus } from "react-icons/fa6";
+import { FiHome } from "react-icons/fi";
+import { GoSignIn } from "react-icons/go";
+import { GoSignOut } from "react-icons/go";
+import Card from "../Components/Card";
+
+const Display = () => {
   return (
     <div className="">
       <div className="grid grid-cols-12 min-h-screen">
         <div className="col-span-1 bg-green-700">
-          <aside className="flex flex-col items-center gap-15">
+          <aside className="flex flex-col items-center gap-6 py-4">
             <FiHome size={28} className="mt-13" />
-            <CiSquarePlus size={28} />
+            <FaRegSquarePlus size={28} />
+            <GoSignIn size={28} />
+            <GoSignOut size={28} />
           </aside>
         </div>
+
         <div className="col-span-11">
           <nav className="bg-white flex items-center p-5 mt-5">
             <div className="relative w-full">
@@ -26,13 +33,26 @@ const Dispay = () => {
               </button>
             </div>
           </nav>
-          <main>
-            <h1></h1>
-          </main>
+          {/* main content*/}
+          <div className="p-5">
+            <main>
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <Card />
+                <Card />
+                <Card />
+              </div>
+              <div className="grid grid-cols-3 gap-4 ">
+                <Card />
+                <Card />
+                <Card />
+              </div>
+            </main>
+          </div>
         </div>
+        <hr className="bg-black"></hr>
       </div>
     </div>
   );
 };
 
-export default Dispay;
+export default Display;
