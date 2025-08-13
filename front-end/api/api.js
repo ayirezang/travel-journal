@@ -35,4 +35,77 @@ export const signInApi = async (data) => {
   }
 };
 
-const createTravelJournal = () => {};
+export const signOutApi = async (data) => {
+  try {
+    const response = await api.post("/signout", data);
+    Cookie.set("token", response.data.token, { expires: 5 });
+    return response.data;
+  } catch (error) {
+    console.error("sign out error:", error);
+    console.error("error response:", error.response);
+    throw new Error(error.response?.data?.message || "sign out failed");
+  }
+};
+
+export const createTravelJournal = async (data) => {
+  try {
+    const response = await api.post("/travel", data);
+    return response.data;
+  } catch (error) {
+    console.error("creating error", error);
+    console.error("creating response", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(
+      error.response?.data?.message || "creating travel memory failed"
+    );
+  }
+};
+export const retrieveTravelJournal = async (data) => {
+  try {
+    const response = await api.get("/travel", data);
+    return response.data;
+  } catch (error) {
+    console.error("creating error", error);
+    console.error("creating response", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(error.response?.data.message || "error retriving data");
+  }
+};
+
+export const getTravelJournalById = async (data) => {
+  try {
+    const response = await api.get(`/travel/${id}`, data);
+    return response.data;
+  } catch (error) {
+    console.error("getting by id error,", error);
+    console.error("retrieving error", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(error.response?.data.message || "error retriving data");
+  }
+};
+
+export const updateTravel = async (id, data) => {
+  try {
+    const response = await api.put(`/travel/${id}`, data);
+    return response.data;
+  } catch (error) {
+    console.error("updating error", error);
+    console.error("updating error", error.message);
+    console.error("updating Data", error.response?.data);
+    throw new Error(error.response?.data.message || "update error");
+  }
+};
+
+export const deleteTravel = async (id) => {
+  try {
+    const response = await api.delete(`/travel/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("delete error", error);
+    console.error("deleting error", error.message);
+    console.error("deleting Data", error.response?.data);
+    throw new Error(error.response?.data.message || "update error");
+  }
+};
+//photo api 
+

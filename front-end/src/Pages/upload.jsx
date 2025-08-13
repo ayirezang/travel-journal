@@ -7,6 +7,8 @@ const Upload = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  
   const onSubmit = (data) => console.log(data);
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
@@ -107,20 +109,8 @@ const Upload = () => {
           >
             Submit
           </button>
-          {/* <div>
-            <label>Description</label>
-            <input></input>
-          </div> */}
         </form>
       </div>
-
-      {/* <form action="/upload" method="post" encType="multipart/form-data">
-        <label for="file">choose a file:</label>
-        <input type="file" name="upload" multiple />
-        <button className="bg-pink-500 text-white p-2 rounded-md">
-          upload image
-        </button>
-      </form> */}
     </div>
   );
 };
