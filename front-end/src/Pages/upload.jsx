@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { createTravelJournal } from "../../api/api";
 
 const Upload = () => {
   const {
@@ -7,18 +9,38 @@ const Upload = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [progress, setProgress] = useState();
 
-  
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const dataForApi = { ...data };
+      if (data.upload) {
+        dataForApi.upload = Array.from(data.upload);
+
+        // axios.post("upload", data, {
+        //   onUploadProgress: (progressEvent) => {
+        //     const { loaded, total } = progressEvent;
+        //     let percentage = Math.floor((loaded * 100) / total);
+        //   },
+        // });
+      } else {
+        dataForApi.upload = [];
+      }
+      await createTravelJournal(dataForApi);
+      alert("created successfully");
+    } catch (error) {
+      console.error("full error:", error.response?.data);
+      alert(
+        "creation  failed:" + (error.response?.data.message || error.message)
+      );
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
       <div>
-        <form
-          onSubmit={handleSubmit((data) => {
-            console.log(data);
-          })}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label>Tile</label>
             <input
@@ -109,6 +131,11 @@ const Upload = () => {
           >
             Submit
           </button>
+          <progress
+            className="progress progress-primary w-56"
+            value="100"
+            max="100"
+          ></progress>
         </form>
       </div>
     </div>

@@ -5,9 +5,9 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://127.0.0.1:4002/api",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  // headers: {
+  //   "Content-Type": "application/json",
+  // },
 });
 //signup
 export const signUpApi = async (data) => {
@@ -49,7 +49,18 @@ export const signOutApi = async (data) => {
 
 export const createTravelJournal = async (data) => {
   try {
-    const response = await api.post("/travel", data);
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("location", data.location);
+    formData.append("date", data.date);
+    formData.append("description", data.description);
+
+    if (data.upload && data.upload.length > 0) {
+      for (let i = 0; i < data.upload.length; i++) {
+        formData.append("upload", data.upload[i]);
+      }
+    }
+    const response = await api.post("/travel", formData);
     return response.data;
   } catch (error) {
     console.error("creating error", error);
@@ -60,7 +71,7 @@ export const createTravelJournal = async (data) => {
     );
   }
 };
-export const retrieveTravelJournal = async (data) => {
+export const retrieveAllTravels = async (data) => {
   try {
     const response = await api.get("/travel", data);
     return response.data;
@@ -72,9 +83,9 @@ export const retrieveTravelJournal = async (data) => {
   }
 };
 
-export const getTravelJournalById = async (data) => {
+export const getTravelJournalById = async (id) => {
   try {
-    const response = await api.get(`/travel/${id}`, data);
+    const response = await api.get(`/travel/${id}`);
     return response.data;
   } catch (error) {
     console.error("getting by id error,", error);
@@ -107,5 +118,4 @@ export const deleteTravel = async (id) => {
     throw new Error(error.response?.data.message || "update error");
   }
 };
-//photo api 
-
+//photo api
