@@ -1,7 +1,8 @@
-const photoModel = require("../models/photosModel");
+// const photoModel = require("../models/photosModel");
 const travelJourModel = require("../models/travelJourModel");
 const { validationResult } = require("express-validator");
 const cloudinary = require("../config/cloudinary");
+const fs = require("fs");
 
 //create controller
 
@@ -19,15 +20,19 @@ const createTravelJournal = async (req, res) => {
     for (const file of req.files) {
       try {
         const result = await cloudinary.uploader.upload(file.path);
-        const photo = new photoModel({
+        images.push({
           filename: file.originalname,
           url: result.secure_url,
-          size: file.size,
-          mimetype: file.mimetype,
-          memoryId: savedJournal._id,
         });
-        const savedPhoto = await photo.save();
-        savedJournal.images.push(savedPhoto._id);
+        // const photo = new photoModel({
+        //   filename: file.originalname,
+        //   url: result.secure_url,
+        //   size: file.size,
+        //   mimetype: file.mimetype,
+        //   memoryId: savedJournal._id,
+        // });
+        // const savedPhoto = await photo.save();
+        // savedJournal.images.push(savedPhoto._id);
         fs.unlinkSync(file.path);
       } catch (error) {
         console.log("Error with file:", error);
@@ -40,6 +45,7 @@ const createTravelJournal = async (req, res) => {
       description,
       location,
       travelDate,
+      images: images,
     });
 
     const savedTravelJournal = await travelDetails.save();

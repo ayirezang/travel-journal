@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { createTravelJournal } from "../../api/api";
 
 const Upload = () => {
   const [progress, setProgress] = useState(0);
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -30,11 +32,13 @@ const Upload = () => {
       await createTravelJournal(dataForApi, config);
 
       alert("created successfully");
+      navigate("/display");
     } catch (error) {
       console.error("full error:", error.response?.data);
       alert(
         "creation  failed:" + (error.response?.data.message || error.message)
       );
+
       console.log(error);
     }
   };
@@ -77,14 +81,14 @@ const Upload = () => {
             <label> Travel date</label>
             <input
               {...register("travelDate", { required: true })}
-              type="travelDate"
+              type="date"
               className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
               name="travelDate"
               id="travelDate"
               placeholder="Enter your travel date"
             ></input>
 
-            {errors.date && (
+            {errors.travelDate && (
               <p className="text-red-500 text-sm mt-1">Date is required</p>
             )}
           </div>

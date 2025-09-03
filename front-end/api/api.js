@@ -52,7 +52,7 @@ export const createTravelJournal = async (data, config = {}) => {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("location", data.location);
-    formData.append("date", data.date);
+    formData.append("travelDate", data.travelDate);
     formData.append("description", data.description);
 
     if (data.upload && data.upload.length > 0) {

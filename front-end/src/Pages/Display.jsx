@@ -8,13 +8,25 @@ import { GoSignIn } from "react-icons/go";
 import { GoSignOut } from "react-icons/go";
 import Card from "../Components/Card";
 import Skeleton from "../Components/Skeleton";
+import { retrieveAllTravels } from "../../api/api";
 
 const Display = () => {
   const [loading, setLoading] = useState(true);
+  const [travels, setTravels] = useState([]);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const fetchTravels = async () => {
+      try {
+        setLoading(true);
+        const data = await retrieveAllTravels();
+        setTravels(data);
+        setLoading(false)
+      } catch (error) {
+        console.error("Error:", error);
+        setLoading(false);
+      }
+    };
+    fetchTravels();
+    setTimeout(() => {}, 1000);
   }, []);
   const Skeletons = [1, 2, 3, 4, 5, 6];
   return (
