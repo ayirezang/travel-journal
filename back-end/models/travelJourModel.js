@@ -25,6 +25,13 @@ const travelJourSchema = new Schema({
       //  message:" travel date  cant be in the future"
     },
   },
+
+  images: [
+    {
+      url: String,
+      filename: String,
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

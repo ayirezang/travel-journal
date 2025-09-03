@@ -47,7 +47,7 @@ export const signOutApi = async (data) => {
   }
 };
 
-export const createTravelJournal = async (data) => {
+export const createTravelJournal = async (data, config = {}) => {
   try {
     const formData = new FormData();
     formData.append("title", data.title);
@@ -60,7 +60,7 @@ export const createTravelJournal = async (data) => {
         formData.append("upload", data.upload[i]);
       }
     }
-    const response = await api.post("/travel", formData);
+    const response = await api.post("/travel", formData, config);
     return response.data;
   } catch (error) {
     console.error("creating error", error);

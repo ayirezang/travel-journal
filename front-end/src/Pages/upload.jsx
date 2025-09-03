@@ -4,29 +4,31 @@ import axios from "axios";
 import { createTravelJournal } from "../../api/api";
 
 const Upload = () => {
+  const [progress, setProgress] = useState(0);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [progress, setProgress] = useState();
 
   const onSubmit = async (data) => {
     try {
       const dataForApi = { ...data };
       if (data.upload) {
         dataForApi.upload = Array.from(data.upload);
-
-        // axios.post("upload", data, {
-        //   onUploadProgress: (progressEvent) => {
-        //     const { loaded, total } = progressEvent;
-        //     let percentage = Math.floor((loaded * 100) / total);
-        //   },
-        // });
       } else {
         dataForApi.upload = [];
       }
-      await createTravelJournal(dataForApi);
+      const config = {
+        onUploadProgress: function (progressEvent) {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded / progressEvent.total) * 100
+          );
+          setProgress(percentCompleted);
+        },
+      };
+      await createTravelJournal(dataForApi, config);
+
       alert("created successfully");
     } catch (error) {
       console.error("full error:", error.response?.data);
@@ -42,7 +44,7 @@ const Upload = () => {
       <div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label>Tile</label>
+            <label>Title</label>
             <input
               {...register("title", { required: true })}
               type="text"
@@ -74,11 +76,11 @@ const Upload = () => {
           <div>
             <label> Travel date</label>
             <input
-              {...register("date", { required: true })}
-              type="date"
+              {...register("travelDate", { required: true })}
+              type="travelDate"
               className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
-              name="date"
-              id="date"
+              name="travelDate"
+              id="travelDate"
               placeholder="Enter your travel date"
             ></input>
 
@@ -100,8 +102,9 @@ const Upload = () => {
               </p>
             )}
           </div>
-          <div>
-            <label>Upload a file (Max 4 pictures)</label>
+          <div className="">
+            <label>(Max 4 pictures)</label>
+
             <input
               {...register("upload", {
                 validate: (files) => {
@@ -119,23 +122,28 @@ const Upload = () => {
               name="upload"
               multiple
             ></input>
+
             {errors.upload && (
               <p className="text-red-500 text-sm mt-1">
                 {errors.upload.message}
               </p>
             )}
+            {/* <button className="bg-[#0D2841]  text-white font-semibold py-3 px-3 rounded-xl">
+                upload files
+              </button> */}
           </div>
+
+          <progress
+            className="progress progress-primary w-56"
+            value={progress}
+            max="100"
+          ></progress>
           <button
             type="submit"
             className="w-full bg-[#0D2841]  text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 mt-4"
           >
             Submit
           </button>
-          <progress
-            className="progress progress-primary w-56"
-            value="100"
-            max="100"
-          ></progress>
         </form>
       </div>
     </div>
