@@ -7,12 +7,17 @@ const Skeleton = () => {
       <div className="relative h-60 mb-4 flex justify-center items-center bg-gray-300 animate-pulse rounded">
         <FaImage size={28} className="text-gray-100" />
       </div>
-
+      <div className="flex justify-between">
+        <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
+        <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
+      </div>
       <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
       <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
       <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
-      <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
-      <button className="w-24 h-10 bg-gray-300 shadow-md animate-pulse"></button>
+      <div className="flex justify-between">
+        <div className="h-4 bg-gray-300 rounded-full mb-4"></div>
+        <button className="w-24 h-10 bg-gray-300 shadow-md animate-pulse"></button>
+      </div>
     </div>
   );
 };

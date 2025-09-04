@@ -5,12 +5,13 @@ cloudinary.config({
   api_secret: process.env.API_secret,
 });
 
-const uploads = (file) => {
-  return new Promise((resolve, reject) => {
-    cloudinary.uploader.upload(file.path, (error, result) => {
-      if (error) reject(error);
-      else resolve(result);
-    });
-  });
-};
-module.exports = { uploads };
+// const uploads = (file) => {
+//   return new Promise((resolve, reject) => {
+//     cloudinary.uploader.upload(file.path, (error, result) => {
+//       if (error) reject(error);
+//       else resolve(result);
+//     });
+//   });
+// };
+// module.exports = { uploads };
+module.exports = cloudinary;
