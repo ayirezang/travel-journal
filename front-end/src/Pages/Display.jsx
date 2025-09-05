@@ -19,7 +19,7 @@ const Display = () => {
         setLoading(true);
         const data = await retrieveAllTravels();
         setTravels(data);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
         console.error("Error:", error);
         setLoading(false);
@@ -64,7 +64,7 @@ const Display = () => {
                     </div>
                   );
                 })}
-                {/* {loading ? <Skeleton /> : <Card />} */}
+                {loading ? <Skeleton /> : <Card />}
               </div>
             </main>
           </div>

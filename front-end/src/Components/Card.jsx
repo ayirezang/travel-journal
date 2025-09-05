@@ -1,18 +1,18 @@
+import React from "react";
+import CarousselDefault from "./CarousselDefault";
+
 const Card = ({ title, location, description, images, travelDate, text }) => {
   return (
     <div className=" p-4 rounded shadow-2xl w-[100%] max-w-[700px]">
-      <div className="relative h-60 mb-4">
-        <img
-          className="absolute w-full  h-full object-cover rounded"
-          src=""
-          alt="image"
-        >
-          <ul>
-            {images.map((images) => (
-              <li key={images.id}></li>
-            ))}
-          </ul>
-        </img>
+      <div className="relative h-60 mb-4 ">
+        <div className="absolute w-full  h-full object-cover rounded">
+          <CarousselDefault images={images} />
+        </div>
+        {/* <ul>
+          {images.map((images) => (
+            <li key={images.id}></li>
+          ))}
+        </ul> */}
       </div>
       <div>
         <div className="flex justify-between">
