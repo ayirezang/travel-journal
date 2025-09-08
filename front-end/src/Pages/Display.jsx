@@ -18,15 +18,16 @@ const Display = () => {
       try {
         setLoading(true);
         const data = await retrieveAllTravels();
+        console.log("API returned:", data);
         setTravels(data);
         setLoading(false);
+        console.log(fetchTravels);
       } catch (error) {
         console.error("Error:", error);
         setLoading(false);
       }
     };
     fetchTravels();
-    setTimeout(() => {}, 1000);
   }, []);
   const Skeletons = [1, 2, 3, 4, 5, 6];
   return (
@@ -57,14 +58,48 @@ const Display = () => {
           <div className="p-5">
             <main>
               <div className="grid grid-cols-3 gap-4 mb-6">
-                {Skeletons.map((skeleton, index) => {
+                {loading
+                  ? Skeletons.map((skeleton, index) => (
+                      <div key={index}>
+                        <Skeleton />
+                      </div>
+                    ))
+                  : travels.map((travel, index) => (
+                      <div key={index}>
+                        <Card
+                          title={travel.title}
+                          location={travel.location}
+                          description={travel.description}
+                          images={travel.images}
+                          text="view more"
+                        />
+                      </div>
+                    ))}
+                {/* {loading? (   travels.map((travel, index) => {
+                  return (
+                    <div key={index}>
+                      <Card
+                        title={title}
+                        location={location}
+                        description={description}
+                        images={images}
+                        travelDate={travelDate}
+                        text={text}
+                      />
+                    </div>
+                  );
+                })  ):( <div><Skeleton/>
+
+                </div> */}
+
+                {/* {Skeletons.map((skeleton, index) => {
                   return (
                     <div key={index}>
                       <Skeleton />
                     </div>
                   );
                 })}
-                {loading ? <Skeleton /> : <Card />}
+                {loading ? <Skeleton /> : <Card />} */}
               </div>
             </main>
           </div>
