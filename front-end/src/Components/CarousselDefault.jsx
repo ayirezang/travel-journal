@@ -9,7 +9,7 @@ export function CarouselDefault({ images, title }) {
           <div>
             <img
               key={image.id}
-              className=" w-full h-full object-cover rounded"
+              className=" w-full h-full object-cover rounded-lg"
               src={image.url}
               alt={title}
             />
