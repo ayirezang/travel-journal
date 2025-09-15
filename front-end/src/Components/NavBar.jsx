@@ -4,7 +4,7 @@ import { CiMenuBurger } from "react-icons/ci";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="bg-gray-200 sticky top-0">
+    <nav className="bg-gray-200 fixex top-0">
       <div className="h-16 flex justify-between p-4">
         {/** home */}
         <div className="text-2xl  font-bold px-4">TravelJOURNAL</div>

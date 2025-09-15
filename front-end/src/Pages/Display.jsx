@@ -6,6 +6,7 @@ import { FaRegSquarePlus } from "react-icons/fa6";
 import { FiHome } from "react-icons/fi";
 import { GoSignIn } from "react-icons/go";
 import { GoSignOut } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 import Card from "../Components/Card";
 import Skeleton from "../Components/Skeleton";
 import { deleteTravel, retrieveAllTravels } from "../../api/api";
@@ -14,6 +15,7 @@ import NavBar from "../Components/NavBar";
 const Display = () => {
   const [loading, setLoading] = useState(true);
   const [travels, setTravels] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTravels = async () => {
@@ -55,7 +57,7 @@ const Display = () => {
         </div> */}
 
         <div className="col-span-12 ">
-          <NavBar />
+          <NavBar className="" />
           {/* <nav className="bg-white flex items-center p-5 mt-5">
             <div className="relative w-full">
               <input
@@ -88,7 +90,7 @@ const Display = () => {
                             {
                               label: "view more",
                               color: "bg-blue-500",
-                              onClick: () => console.log("view clicked"),
+                              onClick: () => navigate(`/gallery/${travel._id}`),
                             },
                             {
                               label: "delete",

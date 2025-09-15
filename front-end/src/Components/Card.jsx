@@ -15,8 +15,13 @@ const Card = ({
   return (
     <div className=" bg-white p-6 rounded-xl shadow-lg  w-[100%] max-w-[700px]">
       <div className="relative h-60 mb-4 ">
-        <div className="absolute w-full  h-full object-cover rounded">
-          <CarousselDefault images={images} />
+        <div className="absolute w-full  h-full object-cover object-top rounded">
+          {images && images.length > 0 && (
+            <img
+              src={images[0].url}
+              className="w-full h-full object-cover object-top rounded"
+            />
+          )}
         </div>
         {/* <ul>
           {images.map((images) => (
