@@ -14,7 +14,7 @@ import NavBar from "../Components/NavBar";
 
 const Display = () => {
   const [loading, setLoading] = useState(true);
-  const [travels, setTravels] = useState([]);
+  const [travels, setTravels] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
