@@ -14,11 +14,13 @@ const Gallery = () => {
       try {
         setLoading(true);
         const data = await getTravelJournalById(id);
-        setTravel(data);
+        setTravel(data.data);
         setLoading(false);
+        console.log("Gallery: API returned:", data);
       } catch (error) {
         console.error("Error:", error);
         setLoading(false);
+        console.error("Gallery API Error:", error);
       }
     };
     displayPhotos();
@@ -30,9 +32,8 @@ const Gallery = () => {
         <div className="">
           <NavBar />
         </div>
-        <main className="flex flex-col items-center justify-center">
-          <h1>YOU</h1>
-          <div className=" ">
+        <main className="max-w-6xl mx-auto px-4 pt-24 pb-12">
+          <div className="mt-10 p-5">
             {loading ? (
               Skeletons.map((skeleton, index) => (
                 <div key={index}>
@@ -40,20 +41,29 @@ const Gallery = () => {
                 </div>
               ))
             ) : travel ? (
-              <div>
+              <div className="p-5">
                 <div>
-                  <h1>{travel.title}</h1>
-                  <p>{travel.location}</p>
-                  <p>{travel.description}</p>
-                  <p>{travel.travelDate}</p>
+                  <h1 className="text-4xl">{travel.title}</h1>
+                  <div className="grid gap-2 sm:grid-cols-1 md:grid-cols lg:grid-cols-2 grid-row-2 ">
+                    {travel.images &&
+                      travel.images.map((image, index) => (
+                        <img
+                          key={index}
+                          src={image.url}
+                          className={`w-full h-full object-cover rounded-lg ${
+                            travel.images.length === 3 && index === 0
+                              ? "md:col-span-2 md:row-span-2"
+                              : "col-span-1 row-span-1"
+                          }`}
+                        />
+                      ))}
+                  </div>
                 </div>
-
-                <div className=" grid grid-cols-1   md:grid-cols-2 gap-4">
-                  {travel.images &&
-                    travel.images.map((image, index) => (
-                      <img key={index} src={image.url} />
-                    ))}
+                <div className="flex justify-between">
+                  <p className="text-2xl">{travel.location}</p>
+                  <p className="text-2xl">{travel.travelDate}</p>
                 </div>
+                <p>{travel.description}</p>
               </div>
             ) : (
               <p>no travel found</p>
