@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { CiMenuBurger } from "react-icons/ci";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,26 +12,23 @@ const NavBar = () => {
         <div className="text-2xl  font-bold px-4">TravelJOURNAL</div>
         {/*buttons * on desktop*/}
         <div className="hidden  sm:block">
-          <a href="" className=" text-lg px-4">
+          <NavLink to="/" className=" text-lg px-4">
             Home
-          </a>
-          <a href="" className=" text-lg px-4">
+          </NavLink>
+          <NavLink to="/upload" className=" text-lg px-4">
             Upload
-          </a>
-          <a href="" className=" text-lg px-4">
-            gallery
-          </a>
+          </NavLink>
+          <NavLink to="/display" className=" text-lg px-4">
+            Display
+          </NavLink>
         </div>
         <div>
-          <a href="" className=" text-lg px-4">
-            Display
-          </a>
-          <a href="" className=" text-lg px-4">
+          <NavLink to="/login" className=" text-lg px-4">
             Login
-          </a>
-          <a href="" className=" text-lg px-4">
+          </NavLink>
+          <NavLink to="" className=" text-lg px-4">
             logout
-          </a>
+          </NavLink>
         </div>
         {/*hamburger*/}
         <button
@@ -42,24 +41,22 @@ const NavBar = () => {
         <div
           className={`${isOpen ? "block" : "hidden"} sm:hidden space-y-2 pb-3`}
         >
-          <a href="" className="text-gray-600 text-lg px-4 block">
+          <NavLink to="/" className="text-gray-600 text-lg px-4 block">
             Home
-          </a>
-          <a href="" className="text-gray-600 text-lg px-4 block">
-            Login
-          </a>
-          <a href="" className="text-gray-600 text-lg px-4 block">
-            logout
-          </a>
-          <a href="" className="text-gray-600 text-lg px-4 block">
+          </NavLink>
+          <NavLink to="/upload" className="text-gray-600 text-lg px-4 block">
             Upload
-          </a>
-          <a href="" className="text-gray-600 text-lg px-4 block">
-            gallery
-          </a>
-          <a href="" className="text-gray-600 text-lg px-4 block">
+          </NavLink>
+
+          <NavLink to="/display" className="text-gray-600 text-lg px-4 block">
             Display
-          </a>
+          </NavLink>
+          <NavLink to="/login" className="text-gray-600 text-lg px-4 block">
+            Login
+          </NavLink>
+          <NavLink to="/" className="text-gray-600 text-lg px-4 block">
+            Sign Out
+          </NavLink>
         </div>
       </div>
     </nav>

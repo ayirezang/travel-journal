@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { createTravelJournal } from "../../api/api";
+import NavBar from "../Components/NavBar";
 
 const Upload = () => {
   const [progress, setProgress] = useState(0);
@@ -44,8 +45,11 @@ const Upload = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center">
+    <div className=" min-h-screen ">
       <div>
+        <NavBar />
+      </div>
+      <div className="flex flex-col justify-center items-center  p-4 mt-10">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label>Title</label>

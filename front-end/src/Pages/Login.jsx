@@ -81,13 +81,13 @@ const Login = () => {
                   },
                 })}
                 type="password"
-                className="w-full px-4 py-3  border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
                 name="password"
                 id="password"
                 placeholder="Enter your password"
               ></input>
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1 ">
+                <p className="text-red-500 text-sm mt-1">
                   {errors.password.message}
                 </p>
               )}

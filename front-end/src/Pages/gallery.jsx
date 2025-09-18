@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import { getTravelJournalById } from "../../api/api";
 import Skeleton from "../Components/Skeleton";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Gallery = () => {
   const [loading, setLoading] = useState(true);
   const [travel, setTravel] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const displayPhotos = async () => {
@@ -25,6 +27,11 @@ const Gallery = () => {
     };
     displayPhotos();
   }, [id]);
+
+  //handleclick
+  const handleclick = () => {
+    navigate("/display");
+  };
   const Skeletons = [1, 2, 3, 4];
   return (
     <div className="grid grid-cols-12 min-h-screen">
@@ -32,8 +39,13 @@ const Gallery = () => {
         <div className="">
           <NavBar />
         </div>
+        <div className="p-5">
+          <button className="hover:bg-gray-200 cursor-pointer px-5 py-5 flex items-center shadow-lg rounded-lg mt-5">
+            <FaArrowLeft size={18} onClick={handleclick} className="" />
+          </button>
+        </div>
         <main className="max-w-6xl mx-auto px-4 pt-24 pb-12">
-          <div className="mt-10 p-5">
+          <div className="">
             {loading ? (
               Skeletons.map((skeleton, index) => (
                 <div key={index}>
@@ -41,19 +53,19 @@ const Gallery = () => {
                 </div>
               ))
             ) : travel ? (
-              <div className="p-5">
+              <div className="p-10 ">
                 <div>
-                  <h1 className="text-4xl">{travel.title}</h1>
-                  <div className="grid gap-2 sm:grid-cols-1 md:grid-cols lg:grid-cols-2 grid-row-2 ">
+                  <h1 className="text-4xl ">{travel.title}</h1>
+                  <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 grid-row-2 ">
                     {travel.images &&
                       travel.images.map((image, index) => (
                         <img
                           key={index}
                           src={image.url}
-                          className={`w-full h-full object-cover rounded-lg ${
+                          className={`w-full max-h-96 object-cover  rounded-lg ${
                             travel.images.length === 3 && index === 0
-                              ? "md:col-span-2 md:row-span-2"
-                              : "col-span-1 row-span-1"
+                              ? "md:col-span-2"
+                              : "col-span-1"
                           }`}
                         />
                       ))}
