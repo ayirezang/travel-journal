@@ -105,7 +105,7 @@ const Upload = () => {
             ></textarea>
 
             {errors.description && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-500 text-sm mt-1 line-clamp-2">
                 description is required
               </p>
             )}

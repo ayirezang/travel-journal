@@ -1,5 +1,6 @@
 import React from "react";
 import CarousselDefault from "./CarousselDefault";
+import TextReduction from "./TextReduction";
 
 const Card = ({
   title,
@@ -34,7 +35,8 @@ const Card = ({
           <h1 className="font-semibold pb-2">{title}</h1>
           <h1 className="font-semibold pb-2">{location}</h1>
         </div>
-        <p className="font-thin pb-2">{description}</p>
+        <TextReduction text={description} maxLength={100} className="text-gray-300" />
+        {/* <p className="font-thin pb-2">{description}</p> */}
         <p className="font-thin pb-2">{travelDate}</p>
         <div className="flex justify-between">
           {/* <button className="px-2 py-2 bg-blue-500 text-white shadow-md"> */}
