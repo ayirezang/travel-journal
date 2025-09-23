@@ -45,20 +45,20 @@ const Gallery = () => {
 
   const Skeletons = [1, 2, 3, 4];
   return (
-    <div className="grid grid-cols-12 min-h-screen">
+    <div className="grid grid-cols-12">
       <div className="col-span-12 ">
-        <div className="">
+        {/* <div className="">
           <NavBar />
-        </div>
+        </div> */}
         <div className="p-5">
           <button
             onClick={handleclick}
-            className="hover:bg-gray-200 cursor-pointer px-5 py-5 flex items-center shadow-lg rounded-lg mt-5"
+            className="hover:bg-gray-200 cursor-pointer px-3 py-3 flex items-center shadow-lg rounded-lg mt-5"
           >
-            <FaArrowLeft size={18} className="" />
+            <FaArrowLeft size={14} className="" />
           </button>
         </div>
-        <main className="max-w-6xl mx-auto px-4 pt-24 pb-12">
+        <main className="max-w-6xl mx-auto p-5">
           <div className="">
             {loading ? (
               Skeletons.map((skeleton, index) => (
@@ -67,13 +67,13 @@ const Gallery = () => {
                 </div>
               ))
             ) : travel ? (
-              <div className="p-10 ">
+              <div className="p-5">
                 <div>
-                  <h1 className="text-4xl ">{travel.title}</h1>
+                  <h1 className="text-3xl mb-3">{travel.title}</h1>
                   <div
                     className={`grid gap-2 ${
                       travel.images.length == 1
-                        ? "grid grid-col-1"
+                        ? "grid grid-rows-1"
                         : travel.images.length == 2
                         ? "grid-cols-1 md:grid-cols-2"
                         : travel.images.length == 3
@@ -85,7 +85,7 @@ const Gallery = () => {
                       <img
                         key={index}
                         src={image.url}
-                        className={`w-full h-96 object-cover rounded-lg ${
+                        className={`w-full h-80 object-cover rounded-lg ${
                           travel.images.length == 3 && index == 0
                             ? "col-span-2 md:col-span-2 row-span-2"
                             : travel.images.length == 3
@@ -110,11 +110,19 @@ const Gallery = () => {
                       ))}
                   </div> */}
                 </div>
-                <div className="flex justify-between">
-                  <p className="text-2xl">{travel.location}</p>
-                  <p className="text-2xl">{formateDate(travel.travelDate)}</p>
+                <div className="mt-4 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between  sm:items-center gap-2">
+                    <p className="text-2xl font-semibold">{travel.location}</p>
+                    <p className="text-2xl font-semibold">
+                      {formateDate(travel.travelDate)}
+                    </p>
+                  </div>
+                  <div className="max-w-xl">
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                      {travel.description}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-600">{travel.description}</p>
               </div>
             ) : (
               <p>no travel found</p>

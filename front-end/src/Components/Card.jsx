@@ -9,8 +9,8 @@ const Card = ({
   images,
   travelDate,
   buttons = [
-    { label: "view more", color: "bg-blue-400", onClick: () => {} },
-    { label: "delete", color: "bg-green-400", onClick: () => {} },
+    { label: "Diew more", color: "bg-blue-400", onClick: () => {} },
+    { label: "Delete", color: "bg-green-400", onClick: () => {} },
   ],
 }) => {
   return (
@@ -35,7 +35,15 @@ const Card = ({
           <h1 className="font-semibold pb-2">{title}</h1>
           <h1 className="font-semibold pb-2">{location}</h1>
         </div>
-        <TextReduction text={description} maxLength={100} className="text-gray-300" />
+        <TextReduction
+          text={description}
+          maxLength={80}
+          // style={{
+          //   color: "#6b7280",
+          //   lineHeight: "1.625",
+          // }}
+          className="text-gray-600 leading-relaxed"
+        />
         {/* <p className="font-thin pb-2">{description}</p> */}
         <p className="font-thin pb-2">{travelDate}</p>
         <div className="flex justify-between">

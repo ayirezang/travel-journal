@@ -88,12 +88,12 @@ const Display = () => {
                           images={travel.images}
                           buttons={[
                             {
-                              label: "view more",
+                              label: "View more",
                               color: "bg-blue-500",
                               onClick: () => navigate(`/gallery/${travel._id}`),
                             },
                             {
-                              label: "delete",
+                              label: "Delete",
                               color: "bg-green-500",
                               onClick: () => deleteTravels(travel._id),
                             },
