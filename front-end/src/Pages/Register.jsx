@@ -19,7 +19,7 @@ const Register = () => {
       console.log("username length:", data.username?.length);
       await signUpApi(data);
       //navigate
-      navigate("/");
+      navigate("/upload");
     } catch (error) {
       console.error("full error:", error.response?.data);
       alert(
@@ -29,7 +29,6 @@ const Register = () => {
     }
   };
 
-  
   return (
     <div className="bg-[#93ACEA] flex flex-col justify-center items-center min-h-screen">
       <div className="bg-white shadow-lg max-w-md w-full rounded-lg p-10">
@@ -141,7 +140,7 @@ const Register = () => {
             </button>
             <p>
               already have an account{" "}
-              <Link to="/upload">
+              <Link to="/login">
                 <span className="text-blue-700">login </span>
               </Link>
             </p>

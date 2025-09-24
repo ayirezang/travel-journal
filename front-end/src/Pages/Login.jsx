@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { signInApi } from "../../api/api";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Login = () => {
     try {
       await signInApi(data);
       //navigate
-      navigate("/");
+      navigate("/upload");
     } catch (error) {
       alert("sign in failed:" + error.message);
       console.log(error);
@@ -23,7 +24,7 @@ const Login = () => {
   };
   return (
     <div className="bg-[#1B73F4] flex flex-col justify-center items-center min-h-screen">
-      <div className="bg-white shadow-lg max-w-md w-full rounded-lg p-10">
+      <div className="bg-white shadow-lg max-w-4xl w-full rounded-lg p-10">
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <div className="text-center">
             <h1 className="font-bold  text-3xl sm:text-2xl md:text-3xl lg:text-4xl tracking-wide">
@@ -101,7 +102,9 @@ const Login = () => {
             </button>
             <div className="text-center">
               <p>Dont have an account?</p>
-              <p>sign up</p>
+              <Link to="/register">
+                <p>sign up</p>
+              </Link>
             </div>
           </div>
         </form>

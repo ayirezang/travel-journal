@@ -142,7 +142,7 @@ const Upload = () => {
           </div>
 
           <progress
-            className="progress progress-primary w-56"
+            className="progress progress-primary w-full"
             value={progress}
             max="100"
           ></progress>
