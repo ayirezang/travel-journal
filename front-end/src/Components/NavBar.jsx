@@ -22,14 +22,20 @@ const NavBar = () => {
             Display
           </NavLink>
         </div>
-        <div>
-          <NavLink to="/login" className=" text-lg px-4">
+        {/* <div className="space-x-2">
+          <button
+            to="/login"
+            className="  px-4 py-2 bg-blue-600 rounded-lg text-white hover:bg-blue-800 text-lg "
+          >
             Login
-          </NavLink>
-          <NavLink to="" className=" text-lg px-4">
-            logout
-          </NavLink>
-        </div>
+          </button>
+          <button
+            to=""
+            className="px-4 py-2 bg-blue-600 rounded-lg text-white hover:bg-blue-800 text-lg "
+          >
+            Logout
+          </button>
+        </div> */}
         {/*hamburger*/}
         <button
           onClick={() => setIsOpen(!isOpen)}

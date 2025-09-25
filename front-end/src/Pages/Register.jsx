@@ -30,11 +30,11 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-[#93ACEA] flex flex-col justify-center items-center min-h-screen">
-      <div className="bg-white shadow-lg max-w-md w-full rounded-lg p-10">
+    <div className="bg-[#1B73F4] flex flex-col justify-center items-center min-h-screen">
+      <div className="bg-white shadow-lg max-w-4xl w-full rounded-lg p-5">
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <div className="text-center">
-            <h1 className="font-bold  text-4xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest">
+            <h1 className="font-bold  text-3xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest">
               Welcome!
             </h1>
             <p className="text-lg sm:text-base md:text-lg lg:text-xl mt-2">
@@ -43,11 +43,11 @@ const Register = () => {
           </div>
 
           {/*username*/}
-          <div className="mt-10 space-y-6 ">
+          <div className=" space-y-6 ">
             <div className="">
               <label
                 htmlFor="username"
-                className=" block text-sm font-semibold text-gray-700"
+                className=" block  font-meduim text-base  tracking-wide mb-1"
               >
                 Username
               </label>
@@ -61,7 +61,7 @@ const Register = () => {
               ></input>
               {errors.username && (
                 <p className="text-red-500 text-sm mt-1">
-                  username is required
+                  Username is required
                 </p>
               )}
             </div>
@@ -69,7 +69,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-700"
+                className="block  font-medium text-base  tracking-wide mb-1"
               >
                 Email
               </label>
@@ -78,11 +78,11 @@ const Register = () => {
                   required: "email is required",
                   minLength: {
                     value: 3,
-                    message: "username must be at least 3 characters",
+                    message: "email must be at least 3 characters",
                   },
                   maxLength: {
                     value: 35,
-                    message: "username must not exceed 35 characters",
+                    message: "email must not exceed 35 characters",
                   },
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -105,7 +105,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-gray-700"
+                className="block  font-medium text-base  mb-1 tracking-wide"
               >
                 Password
               </label>
@@ -134,14 +134,14 @@ const Register = () => {
 
             <button
               type="submit"
-              className="w-full bg-[#0D2841]  text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 mt-4"
+              className="w-full bg-[#0D2841]  text-white font-medium text-base py-3 px-6 rounded-xl hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 mt-4"
             >
-              sign up
+              Sign up
             </button>
-            <p>
-              already have an account{" "}
+            <p className="text-center tracking-wide font-medium text-base">
+              Already have an account{" "}
               <Link to="/login">
-                <span className="text-blue-700">login </span>
+                <span className="text-blue-700">Login </span>
               </Link>
             </p>
           </div>

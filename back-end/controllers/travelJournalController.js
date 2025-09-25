@@ -6,6 +6,53 @@ const fs = require("fs");
 
 //create controller
 
+// const createTravelJournal = async (req, res) => {
+//   //validation checks
+//   const error = validationResult(req);
+//   if (!error.isEmpty()) {
+//     console.log(error);
+//     return res.json({ message: error.array()[0].msg });
+//   }
+//   const { title, description, location, travelDate } = req.body;
+//   const images = [];
+
+//   if (req.files && req.files.length > 0) {
+//     const uploaderPromises = req.files.map((file) =>
+//       cloudinary.uploader.upload(file.path)
+//     );
+//     const results = await Promise.all(uploaderPromises);
+
+//     results.forEach((result, index) => {
+//       images.push({
+//         filename: req.files[index].originalname,
+//         url: result.secure_url,
+//       });
+
+//       req.files.forEach((file) => {
+//         fs.unlinkSync(file.path);
+//       });
+//       // } catch (error) {
+//       //   console.log("Error with file:", error);
+//       // }
+//     });
+//   }
+//   try {
+//     const travelDetails = new travelJourModel({
+//       title,
+//       description,
+//       location,
+//       travelDate,
+//       images: images,
+//     });
+
+//     const savedTravelJournal = await travelDetails.save();
+//     res.status(201).json(savedTravelJournal);
+//   } catch (error) {
+//     console.error("Error ", error);
+//     res.status(500).json({ message: "server error" });
+//   }
+// };
+
 const createTravelJournal = async (req, res) => {
   //validation checks
   const error = validationResult(req);
@@ -13,32 +60,37 @@ const createTravelJournal = async (req, res) => {
     console.log(error);
     return res.json({ message: error.array()[0].msg });
   }
+
   const { title, description, location, travelDate } = req.body;
   const images = [];
 
   if (req.files && req.files.length > 0) {
-    for (const file of req.files) {
-      try {
-        const result = await cloudinary.uploader.upload(file.path);
+    try {
+      const uploaderPromises = req.files.map((file) =>
+        cloudinary.uploader.upload(file.path)
+      );
+      const results = await Promise.all(uploaderPromises);
+
+      results.forEach((result, index) => {
         images.push({
-          filename: file.originalname,
+          filename: req.files[index].originalname,
           url: result.secure_url,
         });
-        // const photo = new photoModel({
-        //   filename: file.originalname,
-        //   url: result.secure_url,
-        //   size: file.size,
-        //   mimetype: file.mimetype,
-        //   memoryId: savedJournal._id,
-        // });
-        // const savedPhoto = await photo.save();
-        // savedJournal.images.push(savedPhoto._id);
-        fs.unlinkSync(file.path);
-      } catch (error) {
-        console.log("Error with file:", error);
-      }
+      });
+
+      // Clean up files once after processing all results
+      req.files.forEach((file) => {
+        try {
+          fs.unlinkSync(file.path);
+        } catch (err) {
+          console.log(`File cleanup failed: ${err.message}`);
+        }
+      });
+    } catch (error) {
+      console.log("Error with file upload:", error);
     }
   }
+
   try {
     const travelDetails = new travelJourModel({
       title,
@@ -47,7 +99,6 @@ const createTravelJournal = async (req, res) => {
       travelDate,
       images: images,
     });
-
     const savedTravelJournal = await travelDetails.save();
     res.status(201).json(savedTravelJournal);
   } catch (error) {
@@ -55,7 +106,6 @@ const createTravelJournal = async (req, res) => {
     res.status(500).json({ message: "server error" });
   }
 };
-
 //retrieve  traveljournal
 
 const retrieveTravelJournal = async (req, res) => {

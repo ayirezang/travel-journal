@@ -36,11 +36,11 @@ const Login = () => {
           </div>
 
           {/*username*/}
-          <div className="mt-10 space-y-6 ">
+          <div className=" space-y-6 ">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-base font-meduim  tracking-wide mb-1"
               >
                 Email
               </label>
@@ -68,7 +68,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-gray-700"
+                className="block font-medium text-base tracking-wide mb-1"
               >
                 Password
               </label>
@@ -101,10 +101,14 @@ const Login = () => {
               Login
             </button>
             <div className="text-center">
-              <p>Dont have an account?</p>
-              <Link to="/register">
-                <p>sign up</p>
-              </Link>
+              <p>
+                Dont have an account?{" "}
+                <Link to="/register">
+                  <span className="text-blue-700">Sign up</span>
+                </Link>
+              </p>
+
+              <p></p>
             </div>
           </div>
         </form>
