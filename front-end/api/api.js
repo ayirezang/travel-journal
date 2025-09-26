@@ -1,4 +1,4 @@
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import axios from "axios";
 
 //set baseUrl for axios
@@ -14,7 +14,7 @@ export const signUpApi = async (data) => {
   try {
     const response = await api.post("/signup", data);
 
-    Cookie.set("token", response.data.token, { expires: 5 });
+    // Cookie.set("token", response.data.token, { expires: 5 });
     return response.data;
   } catch (error) {
     console.error("sign up error:", error);
@@ -26,7 +26,7 @@ export const signUpApi = async (data) => {
 export const signInApi = async (data) => {
   try {
     const response = await api.post("/signin", data);
-    Cookie.set("token", response.data.token, { expires: 5 });
+    // Cookie.set("token", response.data.token, { expires: 5 });
     return response.data;
   } catch (error) {
     console.error("sign in error:", error);
@@ -38,7 +38,7 @@ export const signInApi = async (data) => {
 export const signOutApi = async (data) => {
   try {
     const response = await api.post("/signout", data);
-    Cookie.set("token", response.data.token, { expires: 5 });
+
     return response.data;
   } catch (error) {
     console.error("sign out error:", error);
