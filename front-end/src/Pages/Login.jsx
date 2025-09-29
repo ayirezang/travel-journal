@@ -15,6 +15,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       await signInApi(data);
+      localStorage.setItem("isLoggedIn", "true");
       //navigate
       navigate("/upload");
     } catch (error) {

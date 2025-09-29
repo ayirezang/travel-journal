@@ -6,13 +6,16 @@ import { signOutApi } from "../../api/api";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") == "true"
+  );
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       const data = await signOutApi();
       setIsLoggedIn(false);
+      localStorage.removeItem("isLoggedIn");
 
       navigate("/login");
     } catch (error) {
@@ -27,12 +30,12 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-gray-200   top-0">
+    <nav className="bg-gray-200  fixed  top-0 w-full z-50">
       <div className="h-16 flex justify-between   p-4">
         {/** home */}
         <div className="text-2xl  font-bold px-4">TravelJOURNAL</div>
         {/*buttons * on desktop*/}
-        <div className="hidden  sm:block">
+        <div className="hidden   sm:block">
           <NavLink to="/" className="text-lg px-4">
             Home
           </NavLink>
@@ -43,7 +46,7 @@ const NavBar = () => {
             Display
           </NavLink>
         </div>
-        <div className="space-x-2">
+        <div className="hidden sm:flex space-x-2">
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
