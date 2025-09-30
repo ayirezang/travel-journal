@@ -14,12 +14,14 @@ const Card = ({
   ],
 }) => {
   return (
-    <div className=" bg-white p-6 rounded-xl shadow-lg  w-[100%] max-w-[700px]">
-      <div className="relative h-60 mb-4 ">
-        <div className="absolute w-full  h-full object-cover object-top rounded">
+    <div className="bg-white p-6 rounded-xl shadow-lg  w-full max-w-full md:max-w-[500px] lg:max-w-[700px]">
+      {/**max-[100%] max-w-[700px] */}
+      <div className="relative h-60 mb-4  md:mb-5 lg:mb-7">
+        <div className="absolute w-full h-full object-cover object-top rounded">
           {images && images.length > 0 && (
             <img
               src={images[0].url}
+              alt={title || "travel image"}
               className="w-full h-full object-cover object-top rounded"
             />
           )}
@@ -32,8 +34,8 @@ const Card = ({
       </div>
       <div>
         <div className="flex justify-between">
-          <h1 className="font-semibold pb-2">{title}</h1>
-          <h1 className="font-semibold pb-2">{location}</h1>
+          <h1 className="font-semibold pb-2 md:pb-4 lg:pb-8">{title}</h1>
+          <h1 className="font-semibold pb-2 md:pb-4 lg:pb-8">{location}</h1>
         </div>
         <TextReduction
           text={description}
@@ -51,7 +53,7 @@ const Card = ({
           {buttons.map((button, index) => (
             <button
               key={index}
-              className={`px-2 py-2  text-white shadow-md ${button.color}`}
+              className={`px-2 py-2 md:px-2.5 md:py-2.5 lg:px-3 lg:py-3  rounded-lg  text-white shadow-md ${button.color}`}
               onClick={() => button.onClick()}
             >
               {button.label}
