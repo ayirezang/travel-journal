@@ -30,14 +30,14 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-[#1B73F4] flex flex-col justify-center items-center min-h-screen">
-      <div className="bg-white shadow-lg max-w-4xl w-full rounded-lg p-5">
+    <div className="bg-[#1B73F4] flex flex-col justify-center items-center min-h-screen py-8 px-4">
+      <div className="bg-white shadow-lg max-w-md w-full rounded-lg p-6 md:p-10">
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <div className="text-center">
-            <h1 className="font-bold  text-3xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest">
+            <h1 className="text-xl  md:text-4xl lg:text-4xl tracking-wider">
               Welcome!
             </h1>
-            <p className="text-lg sm:text-base md:text-lg lg:text-xl mt-2">
+            <p className="text-md  md:text-lg lg:text-xl ">
               Sign up to get started
             </p>
           </div>

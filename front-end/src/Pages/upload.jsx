@@ -45,12 +45,15 @@ const Upload = () => {
   };
 
   return (
-    <div className=" min-h-screen ">
-      <div>
+    <div className=" bg-[#1B73F4] min-h-screen flex flex-col justify-center items-center">
+      <div className="flex justify-center items-center">
         <NavBar />
       </div>
-      <div className="flex flex-col justify-center items-center  p-4 mt-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div className="flex flex-col justify-center items-center  p-4 pt-20 bg-white shadow-lg  max-w-xl   rounded-lg w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="  space-y-4 mt-10 ">
+          <div className="text-center text-3xl">
+            <h1>Share your journey</h1>
+          </div>
           <div>
             <label>Title</label>
             <input

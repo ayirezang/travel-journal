@@ -24,20 +24,20 @@ const Login = () => {
     }
   };
   return (
-    <div className="bg-[#1B73F4] flex flex-col justify-center items-center min-h-screen">
-      <div className="bg-white shadow-lg max-w-4xl w-full rounded-lg p-10">
+    <div className="bg-[#1B73F4] flex flex-col justify-center items-center min-h-screen py-8 px-4">
+      <div className="bg-white shadow-lg max-w-md w-full rounded-lg p-6    md:p-10">
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <div className="text-center">
             <h1 className="font-bold  text-3xl sm:text-2xl md:text-3xl lg:text-4xl tracking-wide">
               Good to see you!
             </h1>
-            <p className="text-lg sm:text-base md:text-lg lg:text-xl mt-2">
+            <p className="text-base md:text-lg lg:text-xl mt-1 md:mt-2 lg:mt-2">
               Let's continue the journey
             </p>
           </div>
 
           {/*username*/}
-          <div className=" space-y-6 ">
+          <div className="space-y-4  md:space-y-6 lg:space-y-6 ">
             <div>
               <label
                 htmlFor="email"
