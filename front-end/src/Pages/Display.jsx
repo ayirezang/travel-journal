@@ -46,7 +46,7 @@ const Display = () => {
   };
   return (
     <div className="">
-      <div className="grid grid-cols-12 min-h-screen">
+      <div className="grid grid-cols-12 min-h-screen pt-6 py-12 ">
         <div className="col-span-12">
           <NavBar className="" />
 

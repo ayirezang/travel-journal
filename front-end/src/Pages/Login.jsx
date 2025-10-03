@@ -17,7 +17,7 @@ const Login = () => {
       await signInApi(data);
       localStorage.setItem("isLoggedIn", "true");
       //navigate
-      navigate("/upload");
+      navigate("/create");
     } catch (error) {
       alert("sign in failed:" + error.message);
       console.log(error);

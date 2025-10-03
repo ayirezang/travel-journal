@@ -150,7 +150,6 @@ const Upload = () => {
                 {errors.upload.message}
               </p>
             )}
-            
           </div>
 
           <progress

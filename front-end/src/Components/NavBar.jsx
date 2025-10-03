@@ -42,10 +42,10 @@ const NavBar = () => {
               Home
             </NavLink>
             <NavLink to="/create" className="text-lg px-4">
-              create
+              Add Trip
             </NavLink>
             <NavLink to="/display" className="text-lg px-4">
-              display
+              My Trips
             </NavLink>
 
             {isLoggedIn ? (
