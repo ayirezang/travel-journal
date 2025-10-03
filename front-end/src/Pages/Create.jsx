@@ -45,17 +45,20 @@ const Upload = () => {
   };
 
   return (
-    <div className=" bg-[#1B73F4] min-h-screen flex flex-col justify-center items-center">
-      <div className="flex justify-center items-center">
+    <div className=" bg-[#1B73F4] min-h-screen flex flex-col justify-center items-center py-24 ">
+      <div className="flex justify-center">
         <NavBar />
       </div>
-      <div className="flex flex-col justify-center items-center  p-4 pt-20 bg-white shadow-lg  max-w-xl   rounded-lg w-full">
-        <form onSubmit={handleSubmit(onSubmit)} className="  space-y-4 mt-10 ">
+
+      <div className="flex flex-col  items-center   bg-white shadow-lg  max-w-xl p-4 rounded-lg w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-4 ">
           <div className="text-center text-3xl">
             <h1>Share your journey</h1>
           </div>
           <div>
-            <label>Title</label>
+            <label className="font-meduim text-base  tracking-wide mb-1">
+              Title
+            </label>
             <input
               {...register("title", { required: true })}
               type="text"
@@ -70,7 +73,9 @@ const Upload = () => {
             )}
           </div>
           <div>
-            <label>Location</label>
+            <label className="block  font-meduim text-base  tracking-wide mb-1">
+              Location
+            </label>
             <input
               {...register("location", { required: true })}
               type="text"
@@ -85,7 +90,9 @@ const Upload = () => {
             )}
           </div>
           <div>
-            <label> Travel date</label>
+            <label className="block  font-meduim text-base  tracking-wide mb-1">
+              Travel date
+            </label>
             <input
               {...register("travelDate", { required: true })}
               type="date"
@@ -100,7 +107,9 @@ const Upload = () => {
             )}
           </div>
           <div>
-            <label>Description</label>
+            <label className="block  font-meduim text-base  tracking-wide mb-1">
+              Description
+            </label>
             <textarea
               {...register("description", { required: true })}
               className=" w-full px-4 py-3 rounded-xl border-2  bg-gray-50 border-gray-200 focus:border-[#6A9ACA]"
@@ -114,7 +123,9 @@ const Upload = () => {
             )}
           </div>
           <div className="">
-            <label>(Max 4 pictures)</label>
+            <label className=" block  font-meduim text-base  tracking-wide mb-1">
+              (Max 4 pictures)
+            </label>
 
             <input
               {...register("upload", {
@@ -139,9 +150,7 @@ const Upload = () => {
                 {errors.upload.message}
               </p>
             )}
-            {/* <button className="bg-[#0D2841]  text-white font-semibold py-3 px-3 rounded-xl">
-                upload files
-              </button> */}
+            
           </div>
 
           <progress
