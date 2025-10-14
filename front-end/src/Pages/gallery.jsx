@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import NavBar from "../Components/NavBar";
-import { getTravelJournalById } from "../../api/api";
+
+import { getTravelJournalById } from "/api/api";
 import Skeleton from "../Components/Skeleton";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -47,9 +47,6 @@ const Gallery = () => {
   return (
     <div className="grid grid-cols-12">
       <div className="col-span-12">
-        {/* <div className="">
-          <NavBar />
-        </div> */}
         <div className="p-4 md:p-5 lg:p-5">
           <button
             onClick={handleclick}
@@ -80,34 +77,7 @@ const Gallery = () => {
                     ))}
                   </div>
                 </div>
-                {/* <div>
 
-                  <div
-                    className={`grid gap-2 ${
-                      travel.images.length == 1
-                        ? "grid grid-rows-1"
-                        : travel.images.length == 2
-                        ? "grid-cols-1 md:grid-cols-2"
-                        : travel.images.length == 3
-                        ? "grid-cols-2 md:grid-cols-4 grid-rows-2"
-                        : "grid-col-1 md:grid-cols-2"
-                    }`}
-                  >
-                    {travel.images.map((image, index) => (
-                      <img
-                        key={index}
-                        src={image.url}
-                        className={`w-full h-80 object-cover rounded-lg ${
-                          travel.images.length == 3 && index == 0
-                            ? "col-span-2 md:col-span-2 row-span-2"
-                            : travel.images.length == 3
-                            ? "col-span-1 row-span-1"
-                            : "col-span-1"
-                        }`}
-                      ></img>
-                    ))}
-                  </div>
-                </div> */}
                 <div
                   className="mt-4
                 space-y-4 "

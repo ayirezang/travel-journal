@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
-import { signUpApi } from "../../api/api";
+import { signUpApi } from "/api/api";
 
 const Register = () => {
   const navigate = useNavigate();

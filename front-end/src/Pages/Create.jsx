@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { createTravelJournal } from "../../api/api";
+import { createTravelJournal } from "/api/api";
 import NavBar from "../Components/NavBar";
 
 const Upload = () => {

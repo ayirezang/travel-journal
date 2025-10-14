@@ -9,7 +9,7 @@ import { GoSignOut } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import Card from "../Components/Card";
 import Skeleton from "../Components/Skeleton";
-import { deleteTravel, retrieveAllTravels } from "../../api/api";
+import { deleteTravel, retrieveAllTravels } from "/api/api";
 import NavBar from "../Components/NavBar";
 
 const Display = () => {

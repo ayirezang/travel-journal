@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { CiMenuBurger } from "react-icons/ci";
 import { NavLink, useNavigate } from "react-router-dom";
-import { signOutApi } from "../../api/api";
+import { signOutApi } from "/api/api";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
