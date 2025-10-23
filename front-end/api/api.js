@@ -4,7 +4,7 @@ import axios from "axios";
 //set baseUrl for axios
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:4002/api",
+  baseURL: "https://travel-journal-production.up.railway.app/",
   // headers: {
   //   "Content-Type": "application/json",
   // },

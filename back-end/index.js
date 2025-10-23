@@ -10,9 +10,21 @@ const userRoute = require("./routes/userRoute");
 const cloudinary = require("./config/cloudinary");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const Authorization = require("./controllers/Auth");
 
 const server = express();
-server.use(cors());
+server.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://travel-journal-brown-gamma.vercel.app",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 server.use(cookieParser());
 
 //middleware
