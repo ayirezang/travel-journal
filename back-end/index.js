@@ -26,6 +26,7 @@ server.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+server.options("*", cors());
 server.use(cookieParser());
 
 //middleware
